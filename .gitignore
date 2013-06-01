@@ -2,5 +2,7 @@
 *.ipr
 *.iws
 
-/target
+/out
+/build
+/.gradle
 
