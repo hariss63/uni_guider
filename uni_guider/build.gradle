@@ -1,0 +1,49 @@
+apply plugin : 'java'
+apply plugin : 'idea'
+apply plugin : 'jetty'
+apply plugin : 'maven'
+
+jettyRun {
+    httpPort 8085
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+        compile 'aqua.ideamart:ideamart-api:1.0',
+                'com.google.inject.extensions:guice-persist:3.0',
+                'com.google.inject:guice:3.0',
+                'mysql:mysql-connector-java:5.1.21',
+                'com.google.code.gson:gson:2.2.2',
+                'com.sun.jersey.contribs:jersey-guice:1.14',
+                'com.sun.jersey:jersey-core:1.14',
+                "com.sun.jersey:jersey-client:1.14",
+                "com.sun.jersey:jersey-json:1.14",
+                'com.sun.jersey:jersey-server:1.14',
+                'com.sun.jersey:jersey-servlet:1.11-b04',
+                'com.typesafe:config:0.5.2',
+                'javax.servlet:servlet-api:2.5',
+                'joda-time:joda-time:2.1',
+                'org.codehaus.jackson:jackson-core-asl:1.9.9',
+                'org.codehaus.jackson:jackson-mapper-asl:1.9.9',
+                'net.sf.opencsv:opencsv:2.3',
+        compile('org.hibernate:hibernate-entitymanager:4.1.7.Final') {
+                    exclude module: 'slf4j-log4j12'
+        },
+        compile('org.hibernate:hibernate-c3p0:4.1.7.Final'){
+                    exclude module: 'slf4j-log4j12'
+        },
+                'org.slf4j:slf4j-api:1.7.0',
+                'org.slf4j:slf4j-log4j12:1.7.0'
+
+
+    testCompile 'org.testng:testng:6.7'
+
+    test {
+        useTestNG()
+    }
+}
